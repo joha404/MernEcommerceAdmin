@@ -223,7 +223,7 @@ export default function Product() {
                         <img
                           src={
                             product.image
-                              ? `http://localhost:3000/${product.image}`
+                              ? `https://mern-ecommerce-backend-ma67.vercel.app/${product.image}`
                               : "https://via.placeholder.com/100"
                           }
                           alt={product.name}
