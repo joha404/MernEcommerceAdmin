@@ -10,7 +10,9 @@ export default function Messages() {
   useEffect(() => {
     const fetchMessage = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/messages`);
+        const response = await axios.get(
+          `https://mern-ecommerce-backend-ma67.vercel.app/messages`
+        );
         console.log("Response is: ", response.data);
         if (Array.isArray(response.data)) {
           setMessage(response.data);
@@ -28,7 +30,9 @@ export default function Messages() {
   // Function to delete a specific message
   const deleteMessage = async (messageID) => {
     try {
-      await axios.delete(`http://localhost:3000/messages/delete/${messageID}`);
+      await axios.delete(
+        `https://mern-ecommerce-backend-ma67.vercel.app/messages/delete/${messageID}`
+      );
       setMessage((prevMessages) =>
         prevMessages.filter((msg) => msg._id !== messageID)
       ); // Remove deleted message from state

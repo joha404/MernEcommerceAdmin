@@ -26,7 +26,9 @@ export default function Product() {
   }, []);
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/product/all");
+      const response = await axios.get(
+        "https://mern-ecommerce-backend-ma67.vercel.app/product/all"
+      );
       setProducts(response.data);
       setLoading(false);
     } catch (error) {
@@ -38,7 +40,7 @@ export default function Product() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/category/allcategory"
+        "https://mern-ecommerce-backend-ma67.vercel.app/category/allcategory"
       );
       setCategories(response.data);
     } catch (error) {
@@ -102,7 +104,7 @@ export default function Product() {
       if (addFormData._id) {
         // Update existing product
         response = await axios.put(
-          `http://localhost:3000/product/update/${addFormData._id}`,
+          `https://mern-ecommerce-backend-ma67.vercel.app/product/update/${addFormData._id}`,
           newProductData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -114,7 +116,7 @@ export default function Product() {
       } else {
         // Create new product
         response = await axios.post(
-          "http://localhost:3000/product/create",
+          "https://mern-ecommerce-backend-ma67.vercel.app/product/create",
           newProductData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -154,7 +156,9 @@ export default function Product() {
   const handleDeleteClick = async (productId) => {
     try {
       // Send the delete request to the server
-      await axios.delete(`http://localhost:3000/product/delete/${productId}`);
+      await axios.delete(
+        `https://mern-ecommerce-backend-ma67.vercel.app/product/delete/${productId}`
+      );
 
       // Immediately update the product list state
       setProducts((prevProducts) =>

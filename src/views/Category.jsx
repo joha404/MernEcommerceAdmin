@@ -20,7 +20,7 @@ export default function Category() {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/category/allcategory"
+        "https://mern-ecommerce-backend-ma67.vercel.app/category/allcategory"
       );
       setCategories(response.data);
       setLoading(false);
@@ -60,7 +60,7 @@ export default function Category() {
       if (addFormData._id) {
         // Update existing category
         response = await axios.put(
-          `http://localhost:3000/category/update/${addFormData._id}`,
+          `https://mern-ecommerce-backend-ma67.vercel.app/category/update/${addFormData._id}`,
           { name: addFormData.name, discription: addFormData.discription }
         );
         if (response.data && response.data.category) {
@@ -74,10 +74,13 @@ export default function Category() {
         }
       } else {
         // Create new category
-        response = await axios.post("http://localhost:3000/category/create", {
-          name: addFormData.name,
-          discription: addFormData.discription,
-        });
+        response = await axios.post(
+          "https://mern-ecommerce-backend-ma67.vercel.app/category/create",
+          {
+            name: addFormData.name,
+            discription: addFormData.discription,
+          }
+        );
 
         // Ensure response contains new category
         if (response.data && response.data.category) {
@@ -104,7 +107,9 @@ export default function Category() {
 
   const handleDeleteClick = async (categoryId) => {
     try {
-      await axios.delete(`http://localhost:3000/category/delete/${categoryId}`);
+      await axios.delete(
+        `https://mern-ecommerce-backend-ma67.vercel.app/category/delete/${categoryId}`
+      );
       setCategories((prevCategories) =>
         prevCategories.filter((category) => category._id !== categoryId)
       );

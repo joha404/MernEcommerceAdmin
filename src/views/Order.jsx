@@ -9,7 +9,9 @@ export default function Order() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/checkout");
+        const response = await axios.get(
+          "https://mern-ecommerce-backend-ma67.vercel.app/checkout"
+        );
         console.log("Fetched Orders:", response.data);
         if (response.data.length > 0) {
           setOrders(response.data.reverse()); // Reverse before setting state
@@ -32,7 +34,7 @@ export default function Order() {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/checkout/${orderId}`,
+        `https://mern-ecommerce-backend-ma67.vercel.app/checkout/${orderId}`,
         {
           status: newStatus,
         }
@@ -54,18 +56,21 @@ export default function Order() {
   const completeOrder = async (id) => {
     try {
       // Move the order to complete
-      const response = await fetch(`http://localhost:3000/complete/${id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://mern-ecommerce-backend-ma67.vercel.app/complete/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to complete order");
 
       // Now delete the order
       const deleteResponse = await fetch(
-        `http://localhost:3000/checkout/${id}`,
+        `https://mern-ecommerce-backend-ma67.vercel.app/checkout/${id}`,
         {
           method: "DELETE",
         }
