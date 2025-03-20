@@ -33,7 +33,7 @@ export default function TopNav() {
   const handleLogout = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/logout",
+        "https://mern-ecommerce-backend-ma67.vercel.app/logout",
         {},
         { withCredentials: true }
       );
